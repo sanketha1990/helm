@@ -1,8 +1,9 @@
 ########################### Airflow wrapper ########################################
 airflowWrapper:
   name: dss-airflow-service-service
-  repository: REGISTRY_PROJECT/dss-airflow-operator
-  tag: "BUILD_NUMBER"
+  image:
+    repository: REGISTRY_PROJECT/dss-airflow-wrapper
+    tag: "BUILD_NUMBER"
   ports:
     containerPort: 8080
     name: http

@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.dssClintApplication.name }}
+  name: {{ include "dss-service.client.name" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.dssClintApplication.name }}
+    app: {{ include "dss-service.client.name" . }}
 spec:
   replicas: {{ .Values.dssClintApplication.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.dssClintApplication.name }}
+      app: {{ include "dss-service.client.name" . }}
   template:
     metadata:
       labels:
-        app: {{ .Values.dssClintApplication.name }}
+        app: {{ include "dss-service.client.name" . }}
     spec:
       containers:
         - name: {{ .Values.dssClintApplication.name }}

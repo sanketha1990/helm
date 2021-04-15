@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: {{ include "dss-service.api.name" . }}
-          image: {{ .Values.airflowWrapper.image }}
+          image:  {{ .Values.airflowWrapper.image.registry }}/{{ .Values.airflowWrapper.image.repository }}:{{ .Values.airflowWrapper.image.tag | default .Chart.AppVersion }}
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: {{ .Values.airflowWrapper.ports.containerPort }}
