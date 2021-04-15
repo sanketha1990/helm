@@ -2,10 +2,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "dss-service.api.name" . }}
+  name: {{ .Values.airflowWrapper.name }}
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "dms-service.api.labels" . | nindent 4 }}
+    app: {{ .Values.airflowWrapper.name }}
 spec:
   replicas: {{ .Values.airflowWrapper.replicas }}
   selector:
@@ -25,9 +25,9 @@ spec:
               name: {{ .Values.airflowWrapper.ports.name }}
           volumeMounts:
             - name: config-volume
-              mountPath: {{ .Values.airflowWrapper.volumeMounts.configMountPath | quote }}
+              mountPath: {{ .Values.airflowWrapper.volumeMounts.dssConfig.path | quote }}
             - name: shared-volume
-              mountPath: {{ .Values.airflowWrapper.volumeMounts.sharedMountPath | quote }} 
+              mountPath: {{ .Values.airflowWrapper.volumeMounts.dssShared.path | quote }} 
             - name: logs-volume
               mountPath: {{ .Values.airflowWrapper.volumeMounts.dssLogs.path | quote }}
             - name: dags-volume
@@ -39,27 +39,26 @@ spec:
             - name: output-volume
               mountPath: {{ .Values.airflowWrapper.volumeMounts.dssOutput.path | quote }}
               
-              
       volumes:
         - name: config-volume
           configMap:
-            name: {{ .Values.airflowWrapper.dssConfig.claimName }}
+            name: {{ .Values.airflowWrapper.volumeMounts.dssConfig.claimName }}
         - name: shared-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssShared.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssShared.claimName }}
         - name: dags-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssDags.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssDags.claimName }}
         - name: data-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssData.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssData.claimName }}
         - name: logs-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssLogs.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssLogs.claimName }}
         - name: modelrepository-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssModelrepository.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssModelrepository.claimName }}
         - name: output-volume
           persistentVolumeClaim:
-            claimName: {{ .Values.airflowWrapper.dssOutput.claimName }}
+            claimName: {{ .Values.airflowWrapper.volumeMounts.dssOutput.claimName }}
 {{- end -}}

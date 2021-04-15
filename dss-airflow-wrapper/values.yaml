@@ -12,7 +12,7 @@ airflowWrapper:
       path: /deployments/config
     dssShared:
       claimName: shared-pv-claim
-      sharedMountPath: /root/.ngp
+      path: /root/.ngp
     dssLogs:
       claimName: logs-pvc
       path: /usr/local/airflow/logs
@@ -35,3 +35,10 @@ airflowWrapper:
   ingress:
     name: dss-airflow-service-ingress
     path: dss-airflow-service
+
+############################ Enable/Disable application services ##############################
+services:
+  airflowWrapperIngress:
+      enabled: true
+  airflowWrapperService:
+      enabled: true
