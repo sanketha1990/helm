@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.airflowWrapper.name }}
+  name: {{ include "dss-service.api.name" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.airflowWrapper.name }}
+    app: {{ include "dss-service.api.name" . }}
 spec:
   replicas: {{ .Values.airflowWrapper.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.airflowWrapper.name }}
+      app: {{ include "dss-service.api.name" . }}
   template:
     metadata:      
       labels:
-        app: {{ .Values.airflowWrapper.name }}
+        app: {{ include "dss-service.api.name" . }}
     spec:
       containers:
-        - name: {{ .Values.airflowWrapper.name }}
+        - name: {{ include "dss-service.api.name" . }}
           image: {{ .Values.airflowWrapper.image }}
           imagePullPolicy: "IfNotPresent"
           ports:
