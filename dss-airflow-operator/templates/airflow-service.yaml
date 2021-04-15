@@ -1,0 +1,17 @@
+{{- if .Values.services.airflow.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.airflow.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.airflow.name }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.airflow.ports.airflowPort }}
+      nodePort: {{ .Values.airflow.ports.nodePort }}
+      name: {{ .Values.airflow.ports.name }}
+  selector:
+   app: {{ .Values.airflow.name }}
+{{- end -}}

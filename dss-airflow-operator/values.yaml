@@ -1,0 +1,48 @@
+namespace: helm-template
+airflow:
+  name: airflow-webserver
+  replicas: 1
+  image: docker.io/subexdss/dss-airflow-image:v2
+  loadex: "n"
+  executor: Local
+  username: airflow
+  password: airflow
+  security:
+    username: airflow
+    firstname: ngp
+    lastname: admin
+    email: nitin.j@subex.com
+    password: airflow
+
+  db: airflow
+  host: postgres-v1
+  ports:
+    postgresPort: 5432
+    airflowPort: 8080
+    nodePort: 30222
+    name: http
+  volumes:
+    basePath: /home/subex/charts/stable/airflow-deployment/dss-airflow-operators
+  
+  ingress:
+    name: airflow-ingress
+    path: home
+  
+postgres:
+  name: postgres-v1
+  image: postgres:9.6.14
+  replicas: 1
+  username: airflow
+  password: airflow
+  db: airflow
+  ports:
+    containerPort: 5432
+    name: http
+
+services:
+  ingress:
+      enabled: true
+  airflow:
+      enabled: true
+  postgres:
+      enabled: true

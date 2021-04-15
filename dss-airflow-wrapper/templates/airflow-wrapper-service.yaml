@@ -1,0 +1,17 @@
+{{- if .Values.services.airflowWrapperService.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name:  {{ .Values.airflowWrapper.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app:  {{ .Values.airflowWrapper.name }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.airflowWrapper.ports.containerPort }}
+      nodePort: {{ .Values.airflowWrapper.ports.nodePort }}
+      name: {{ .Values.airflowWrapper.ports.name }}
+  selector:
+   app:  {{ .Values.airflowWrapper.name }}
+{{- end -}}

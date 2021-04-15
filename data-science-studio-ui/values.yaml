@@ -1,0 +1,26 @@
+############################ DSS UI (Client) service ########################################
+dssClintApplication:
+  name: data-science-studio-app-client
+  image: docker.io/subexdss/data-science-studio-ui:v1
+  replicas: 1
+  ports:
+    port: 80
+    nodePort: 30111
+    name: http
+  volumeMounts:
+    name: config-volume
+    mountPath: /usr/share/nginx/html/assets/conf/api.config.json
+    subPath: api.config.json
+  volumes:
+    configMapName: data-science-studio-api-config-v2
+
+  ingress:
+    name: dss-ui-ingress
+    path: data-science-studio-ui
+
+############################ Enable/Disable application services ##############################
+services:
+  dssClientService:
+      enabled: true
+  dssClientIngress:
+      enabled: true

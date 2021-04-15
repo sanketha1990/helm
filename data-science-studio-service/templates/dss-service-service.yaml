@@ -1,0 +1,16 @@
+{{- if .Values.services.dssServiceService.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.dssServiceApplication.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.dssServiceApplication.name }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.dssServiceApplication.ports.port }}
+      name: {{ .Values.dssServiceApplication.ports.name }}
+  selector:
+   app: {{ .Values.dssServiceApplication.name }}
+{{- end -}}

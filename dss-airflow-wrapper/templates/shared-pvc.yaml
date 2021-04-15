@@ -1,0 +1,159 @@
+apiVersion: v1
+kind: PersistentVolumeClaim        # Create a PersistentVolumeClaim to request a PersistentVolume storage
+metadata:                          # Claim name and labels
+  name: uploads-pv-claim
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: data-science-studio-service
+spec:                              # Access mode and resource limits
+  accessModes:
+    - ReadWriteMany                # ReadWriteMany means the volume can be mounted as read-write by many Nodes
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: config-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: script-volume
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: shared-pv-claim
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  storageClassName: nfs-provisioner
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dags-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: logs-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: output-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: modelrepository-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dask-data-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: db-pvc
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ngp
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi

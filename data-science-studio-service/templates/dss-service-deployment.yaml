@@ -1,0 +1,44 @@
+{{- if .Values.services.dssServiceService.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dssServiceApplication.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.dssServiceApplication.name }}
+spec:
+  replicas: {{ .Values.dssServiceApplication.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.dssServiceApplication.name }}
+  template:
+    metadata:      
+      labels:
+        app: {{ .Values.dssServiceApplication.name }}
+    spec:
+      containers:
+        - name: {{ .Values.dssServiceApplication.name }}
+          image: {{ .Values.dssServiceApplication.image }}
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: {{ .Values.dssServiceApplication.ports.port }}
+              name: {{ .Values.dssServiceApplication.ports.name }}
+          volumeMounts:
+            - name: {{ .Values.dssServiceApplication.volumeMounts.configName }}
+              mountPath: {{ .Values.dssServiceApplication.volumeMounts.configMountPath }}
+            - name: {{ .Values.dssServiceApplication.volumeMounts.sharedName }}
+              mountPath: {{ .Values.dssServiceApplication.volumeMounts.sharedMountPath }}
+            - name: {{ .Values.dssServiceApplication.volumeMounts.uploadName }}
+              mountPath: {{ .Values.dssServiceApplication.volumeMounts.uploadMountPath }}
+      volumes:
+        - name: {{ .Values.dssServiceApplication.volumeMounts.configName }}
+          configMap:
+            name: data-science-studio-application-properties-v1
+        - name: {{ .Values.dssServiceApplication.volumeMounts.sharedName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.dssServiceApplication.volumes.sharedClaimName }}
+        - name: {{ .Values.dssServiceApplication.volumeMounts.uploadName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.dssServiceApplication.volumes.uploadClaimName }}
+
+{{- end -}}

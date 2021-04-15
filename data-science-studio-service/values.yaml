@@ -1,0 +1,32 @@
+############################ DSS middle layer (service) #####################################
+dssServiceApplication:
+  name: data-science-studio-app-service
+  image: docker.io/subexdss/data-science-studio-service:v1
+  replicas: 1
+  ports:
+    port: 8080
+    name: http
+  volumeMounts:
+    configName: config-volume
+    configMountPath:  /deployments/config
+    sharedName: shared-volume
+    sharedMountPath: /root/.ngp
+    uploadName: upload-volume
+    uploadMountPath: /upload
+  environment:
+    servicePrecondition: "ngp-postgres:5432"
+  volumes:
+    configMapName: data-science-studio-application-properties-v1
+    sharedClaimName: shared-pv-claim
+    uploadClaimName: uploads-pv-claim
+
+  ingress:
+    name: data-science-studio-app-service-ingress
+    path: dss-app-service
+
+############################ Enable/Disable application services ##############################
+services:
+  dssServiceService:
+      enabled: true
+  dssServiceIngress:
+      enabled: true

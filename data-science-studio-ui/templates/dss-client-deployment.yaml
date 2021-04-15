@@ -1,0 +1,34 @@
+{{- if .Values.services.dssClientService.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dssClintApplication.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.dssClintApplication.name }}
+spec:
+  replicas: {{ .Values.dssClintApplication.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.dssClintApplication.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dssClintApplication.name }}
+    spec:
+      containers:
+        - name: {{ .Values.dssClintApplication.name }}
+          image: {{ .Values.dssClintApplication.image }}
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: {{ .Values.dssClintApplication.ports.port }}
+          volumeMounts:
+            - name: {{ .Values.dssClintApplication.volumeMounts.name }}
+              mountPath: {{ .Values.dssClintApplication.volumeMounts.mountPath }}
+              subPath: {{ .Values.dssClintApplication.volumeMounts.subPath }}
+      volumes:
+        - name: {{ .Values.dssClintApplication.volumeMounts.name }}
+          configMap:
+            name: {{ .Values.dssClintApplication.volumes.configMapName }}
+
+{{- end -}}

@@ -1,0 +1,17 @@
+{{- if .Values.services.dssClientService.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.dssClintApplication.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.dssClintApplication.name }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.dssClintApplication.ports.port }}
+      nodePort: {{ .Values.dssClintApplication.ports.nodePort }}
+      name: {{ .Values.dssClintApplication.ports.name }}
+  selector:
+          app: {{ .Values.dssClintApplication.name }}
+{{- end -}}

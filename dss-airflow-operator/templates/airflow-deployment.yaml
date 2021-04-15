@@ -1,0 +1,102 @@
+{{- if .Values.services.airflow.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.airflow.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.airflow.name }}
+spec:
+  replicas: {{ .Values.airflow.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.airflow.name }}
+  template:
+    metadata:      
+      labels:
+        app: {{ .Values.airflow.name }}
+    spec:
+      volumes:
+      - name: config-volume
+        persistentVolumeClaim:
+          claimName: config-pvc
+      - name: script-volume
+        persistentVolumeClaim:
+          claimName: script-pvc
+      - name: dags-volume
+        persistentVolumeClaim:
+          claimName: dags-pvc
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: data-pvc
+      - name: logs-volume
+        persistentVolumeClaim:
+          claimName: logs-pvc
+      - name: db-volume
+        persistentVolumeClaim:
+          claimName: db-pvc
+      - name: modelrepository-volume
+        persistentVolumeClaim:
+          claimName: modelrepository-pvc
+      - name: dask-data-volume
+        persistentVolumeClaim:
+          claimName: dask-data-pvc
+      - name: output-volume
+        persistentVolumeClaim:
+          claimName: output-pvc
+
+      containers:
+        - name: {{ .Values.airflow.name }}
+          image: {{ .Values.airflow.image }}
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: {{ .Values.airflow.ports.airflowPort }}
+              name: {{ .Values.airflow.ports.name }}
+          env:
+          - name: LOAD_EX
+            value: {{ .Values.airflow.loadex | quote }}
+          - name: EXECUTOR
+            value: {{ .Values.airflow.executor | quote }}
+          - name: AIRFLOW__CORE__SQL_ALCHEMY_CONN
+            value: sqlite:////usr/local/airflow/db/airflow.db"
+          - name: POSTGRES_HOST
+            value: {{ .Values.airflow.host }}
+          - name: POSTGRES_PORT
+            value: {{ .Values.airflow.ports.postgresPort | quote }}
+          - name: POSTGRES_USER
+            value: {{ .Values.airflow.username }}
+          - name: POSTGRES_PASSWORD
+            value: {{ .Values.airflow.password }}
+          - name: POSTGRES_DB
+            value: {{ .Values.airflow.db }}
+          - name: SECURITY__ADMIN_USERNAME
+            value: {{ .Values.airflow.security.username }}
+          - name: SECURITY__ADMIN_FIRSTNAME
+            value: {{ .Values.airflow.security.firstname }}
+          - name: SECURITY__ADMIN_LASTNAME
+            value: {{ .Values.airflow.security.lastname }}
+          - name: SECURITY__ADMIN_EMAIL
+            value: {{ .Values.airflow.security.email }}
+          - name: SECURITY__ADMIN_PASSWORD
+            value: {{ .Values.airflow.security.password }}
+
+          volumeMounts:
+          - mountPath: "/usr/local/airflow/airflow.cfg"
+            name: config-volume
+          - mountPath: "/entrypoint.sh"
+            name: script-volume
+          - mountPath: "/usr/local/airflow/logs"
+            name: logs-volume
+          - mountPath: "/usr/local/airflow/dags"
+            name: dags-volume
+          - mountPath: "/usr/local/airflow/db"
+            name: db-volume
+          - mountPath: "/usr/local/airflow/data"
+            name: data-volume
+          - mountPath: "/usr/local/airflow/modelrepository"
+            name: modelrepository-volume
+          - mountPath: "/usr/local/airflow/dask-data"
+            name: dask-data-volume 
+          - mountPath: "/usr/local/airflow/output"
+            name: output-volume
+{{- end -}}
