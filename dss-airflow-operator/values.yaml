@@ -38,7 +38,7 @@ postgres:
   ports:
     containerPort: 5432
     name: http
-
+#################### enable or disable services ######################
 services:
   ingress:
       enabled: true

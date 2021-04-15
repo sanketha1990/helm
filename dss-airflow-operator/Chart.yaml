@@ -1,6 +1,6 @@
 apiVersion: v2
-name: dss-airflow-operator
-description: A Helm chart for Kubernetes
+name: airflow-operator
+description: A Helm chart for DSS airflow-operator
 
 # A chart can be either an 'application' or a 'library' chart.
 #

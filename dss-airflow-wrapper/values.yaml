@@ -1,7 +1,8 @@
 ########################### Airflow wrapper ########################################
 airflowWrapper:
   name: dss-airflow-service-service
-  image: docker.io/subexdss/dss-airflow-wrapper:v1
+  repository: REGISTRY_PROJECT/dss-airflow-operator
+  tag: "BUILD_NUMBER"
   ports:
     containerPort: 8080
     name: http
