@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.dssServiceApplication.name }}
+  name: {{ include "dss-service.api.name" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.dssServiceApplication.name }}
+    app: {{ include "dss-service.api.name" . }}
 spec:
   replicas: {{ .Values.dssServiceApplication.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.dssServiceApplication.name }}
+      app: {{ include "dss-service.api.name" . }}
   template:
     metadata:      
       labels:
-        app: {{ .Values.dssServiceApplication.name }}
+        app: {{ include "dss-service.api.name" . }}
     spec:
       containers:
-        - name: {{ .Values.dssServiceApplication.name }}
-          image: {{ .Values.dssServiceApplication.image }}
+        - name: {{ include "dss-service.api.name" . }}
+          image: image:  {{ .Values.dssServiceApplication.image.registry }}/{{ .Values.dssServiceApplication.image.repository }}:{{ .Values.dssServiceApplication.image.tag | default .Chart.AppVersion }}
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: {{ .Values.dssServiceApplication.ports.port }}
