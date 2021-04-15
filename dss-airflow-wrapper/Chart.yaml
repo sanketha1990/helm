@@ -1,6 +1,6 @@
 apiVersion: v2
 name: dss-airflow-wrapper
-description: A Helm chart for Kubernetes
+description: A Helm chart for dss-airflow-wrapper
 
 # A chart can be either an 'application' or a 'library' chart.
 #
