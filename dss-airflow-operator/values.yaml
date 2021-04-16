@@ -2,9 +2,7 @@ namespace: helm-template
 airflow:
   name: airflow-webserver
   replicas: 1
-  image:
-    repository: REGISTRY_PROJECT/dss-airflow-service
-    tag: "BUILD_NUMBER"
+  image: docker.io/subexdss/dss-airflow-image:v3
   loadex: "n"
   executor: Local
   username: airflow

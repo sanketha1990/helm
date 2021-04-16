@@ -1,9 +1,7 @@
 ############################ DSS middle layer (service) #####################################
 dssServiceApplication:
   name: data-science-studio-app-service
-  image:
-    repository: REGISTRY_PROJECT/data-science-studio-service
-    tag: "BUILD_NUMBER"
+  image: docker.io/subexdss/data-science-studio-service:v1
   replicas: 1
   ports:
     port: 8080
