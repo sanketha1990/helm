@@ -17,12 +17,6 @@ spec:
         app: {{ include "dss-service.api.name" . }}
     spec:
       volumes:
-      - name: config-volume
-        persistentVolumeClaim:
-          claimName: config-pvc
-      - name: script-volume
-        persistentVolumeClaim:
-          claimName: script-pvc
       - name: dags-volume
         persistentVolumeClaim:
           claimName: dags-pvc
@@ -81,10 +75,6 @@ spec:
             value: {{ .Values.airflow.security.password }}
 
           volumeMounts:
-          - mountPath: "/usr/local/airflow/airflow.cfg"
-            name: config-volume
-          - mountPath: "/entrypoint.sh"
-            name: script-volume
           - mountPath: "/usr/local/airflow/logs"
             name: logs-volume
           - mountPath: "/usr/local/airflow/dags"
