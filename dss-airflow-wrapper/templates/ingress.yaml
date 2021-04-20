@@ -10,7 +10,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /dss-airflow-service
+      - path: /dss-airflow
         backend:
           serviceName: dss-wrapper-dss-airflow-wrapper-api
           servicePort: http
