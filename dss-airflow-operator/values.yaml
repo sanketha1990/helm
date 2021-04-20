@@ -41,7 +41,7 @@ postgres:
 #################### enable or disable services ######################
 services:
   ingress:
-      enabled: false
+      enabled: true
   airflow:
       enabled: true
   postgres:
