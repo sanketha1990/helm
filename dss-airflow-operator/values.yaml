@@ -26,7 +26,7 @@ airflow:
   
   ingress:
     name: airflow-ingress
-    path: home
+    path: airflow-ingress
   
 postgres:
   name: postgres-v1
