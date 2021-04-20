@@ -1,5 +1,5 @@
 ########################### Airflow wrapper ########################################
-namespace: sys-testing
+namespace: dss-ingress
 airflowWrapper:
   name: dss-airflow-service-service
   image: docker.io/subexdss/dss-airflow-wrapper:v2
