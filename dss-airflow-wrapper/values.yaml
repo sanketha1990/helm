@@ -40,6 +40,6 @@ airflowWrapper:
 ############################ Enable/Disable application services ##############################
 services:
   airflowWrapperIngress:
-      enabled: true
+      enabled: false
   airflowWrapperService:
-      enabled: false 
+      enabled: true 
