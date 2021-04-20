@@ -1,4 +1,4 @@
-namespace: helm-template
+namespace: dss-ingress
 airflow:
   name: airflow-webserver
   replicas: 1
@@ -41,7 +41,7 @@ postgres:
 #################### enable or disable services ######################
 services:
   ingress:
-      enabled: true
+      enabled: false
   airflow:
       enabled: true
   postgres:

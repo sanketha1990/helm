@@ -7,10 +7,9 @@ metadata:
   labels:
     app: {{ include "dss-service.api.name" . }}
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: {{ .Values.airflow.ports.airflowPort }}
-      nodePort: {{ .Values.airflow.ports.nodePort }}
       name: {{ .Values.airflow.ports.name }}
   selector:
    app: {{ include "dss-service.api.name" . }}
