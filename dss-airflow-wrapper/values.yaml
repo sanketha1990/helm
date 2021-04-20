@@ -9,7 +9,7 @@ airflowWrapper:
     nodePort: 30333
   volumeMounts:
     dssConfig: 
-      claimName: dss-airflow-service-application-properties
+      claimName: dss-airflow-service-application-properties-v1
       path: /deployments/config
     dssShared:
       claimName: shared-pv-claim

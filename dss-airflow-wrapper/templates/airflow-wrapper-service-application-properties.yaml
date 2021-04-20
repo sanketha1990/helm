@@ -107,5 +107,5 @@ data:
 
 kind: ConfigMap
 metadata:
-  name: dss-airflow-service-application-properties 
+  name: dss-airflow-service-application-properties-v1
 {{- end -}}
