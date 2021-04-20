@@ -35,7 +35,7 @@ airflowWrapper:
 
   ingress:
     name: dss-airflow-service-ingress
-    path: dss-airflow-service
+    path: dss-airflow
 
 ############################ Enable/Disable application services ##############################
 services:
