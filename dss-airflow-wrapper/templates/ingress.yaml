@@ -10,7 +10,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /airflow-wrapper
+      - path: /swagger-ui.html
         backend:
           serviceName: dss-wrapper-dss-airflow-wrapper-api
           servicePort: http
