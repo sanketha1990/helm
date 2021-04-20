@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: dss-airflow-service
-  namespace: dss-ingress
+  namespace: sys-testing
   annotations:
     kubernetes.io/ingress.class: kong
     konghq.com/strip-path: "false"
