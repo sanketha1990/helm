@@ -42,4 +42,4 @@ services:
   airflowWrapperIngress:
       enabled: true
   airflowWrapperService:
-      enabled: true 
+      enabled: false 
