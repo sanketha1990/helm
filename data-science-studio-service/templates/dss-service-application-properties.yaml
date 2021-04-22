@@ -52,7 +52,7 @@ data:
     ################################ Keycloak Properties ########################################
 
     keycloak.realm=sys-testing
-    keycloak.resource=data-science-studio-service-v2
+    keycloak.resource=data-science-studio-service-v3
     keycloak.auth-server-url=http://10.113.104.24:31353/auth
     keycloak.ssl-required=external
     keycloak.public-client=true
@@ -80,16 +80,16 @@ data:
     ngp.register.attribute.subMenuData =
     
     ngp.register.enabled=true
-    ngp.register.service.id=data-science-studio-app-v2
-    ngp.register.service.name=Data Science Studio App V2
-    ngp.register.service.url=http://10.113.104.24:30111/
-    ngp.register.service.description=Data Science Studio App V2
+    ngp.register.service.id=data-science-studio-app-v3
+    ngp.register.service.name=Data Science Studio App V3
+    ngp.register.service.url=http://10.113.104.24:30112/
+    ngp.register.service.description=Data Science Studio App V3
     ngp.register.service.create.default.users=true
 
     ngp.register.apiservice.enabled=false
-    ngp.register.apiservice.id=data-science-studio-service-v2
-    ngp.register.apiservice.name=Data Science Studio Service V2
-    ngp.register.apiservice.description=Data Science Studio Service V2
+    ngp.register.apiservice.id=data-science-studio-service-v3
+    ngp.register.apiservice.name=Data Science Studio Service V3
+    ngp.register.apiservice.description=Data Science Studio Service V3
     ngp.register.apiservice.roles=configuration_view
 
     ngp.register.force.delete=false
