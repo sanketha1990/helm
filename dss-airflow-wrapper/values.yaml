@@ -34,8 +34,8 @@ airflowWrapper:
     servicePrecondition: "ngp-postgres:5432"
 
   ingress:
-    name: dss-airflow-service
-    path: dss-airflow-service
+    name: data-science-studio-airflow-service
+    path: data-science-studio-airflow-service
 
 ############################ Enable/Disable application services ##############################
 services:
