@@ -5,7 +5,7 @@ dssClintApplication:
   replicas: 1
   ports:
     port: 80
-    nodePort: 30111
+    nodePort: 30112
     name: http
   volumeMounts:
     name: config-volume
