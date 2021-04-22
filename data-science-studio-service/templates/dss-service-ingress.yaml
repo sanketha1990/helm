@@ -15,4 +15,4 @@ spec:
         backend:
           serviceName: {{ include "dss-service.api.name" . }}
           servicePort: {{ .Values.dssServiceApplication.ports.port }}
-{{- end -}}
+{{- end -}} 
