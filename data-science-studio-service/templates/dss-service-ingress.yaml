@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     kubernetes.io/ingress.class: kong
-    konghq.com/strip-path: "true"
+    konghq.com/strip-path: "false"
 spec:
   rules:
   - http:
