@@ -1,7 +1,7 @@
 ############################ DSS UI (Client) service ########################################
 dssClintApplication:
   name: data-science-studio-app-client
-  image: docker.io/subexdss/data-science-studio-ui:v1
+  image: 10.113.56.67/ngp-develop/data-science-studio-ui:20210423145325
   replicas: 1
   ports:
     port: 80

@@ -2,7 +2,7 @@ namespace: dss-ingress
 airflow:
   name: airflow-webserver
   replicas: 1
-  image: docker.io/subexdss/dss-airflow-image:v3
+  image: 10.113.56.67/ngp-develop/dss-airflow-operators:20210422172713
   loadex: "n"
   executor: Local
   username: airflow

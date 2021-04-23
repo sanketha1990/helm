@@ -2,7 +2,7 @@
 namespace: dss-ingress
 airflowWrapper:
   name: dss-airflow-service-service
-  image: docker.io/subexdss/dss-airflow-wrapper:v2
+  image: 10.113.56.67/ngp-develop/dss-airflow-service-service:20210422195110
   ports:
     containerPort: 8080
     name: http
