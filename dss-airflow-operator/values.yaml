@@ -19,14 +19,14 @@ airflow:
   ports:
     postgresPort: 5432
     airflowPort: 8080
-    nodePort: 30222
+    nodePort: 30223
     name: http
   volumes:
     basePath: /home/subex/charts/stable/airflow-deployment/dss-airflow-operators
   
   ingress:
-    name: data-science-studio-airflow-operator
-    path: data-science-studio-airflow-operator
+    name: airflow-operator
+    path: airflow-operator
   
 postgres:
   name: postgres-v1

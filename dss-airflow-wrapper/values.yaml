@@ -6,7 +6,7 @@ airflowWrapper:
   ports:
     containerPort: 8080
     name: http
-    nodePort: 30333
+    nodePort: 30334
   volumeMounts:
     dssConfig: 
       claimName: dss-airflow-service-application-properties-v1

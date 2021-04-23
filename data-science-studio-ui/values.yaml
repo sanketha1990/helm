@@ -15,8 +15,8 @@ dssClintApplication:
     configMapName: data-science-studio-api-config-v2
 
   ingress:
-    name: data-science-studio-ui-v1
-    path: data-science-studio-ui-v1
+    name: dss-ui
+    path: dss-ui
 
 ############################ Enable/Disable application services ##############################
 services:
