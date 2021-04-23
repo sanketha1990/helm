@@ -21,8 +21,8 @@ dssServiceApplication:
     uploadClaimName: uploads-pv-claim
 
   ingress:
-    name: data-science-studio-mid-service
-    path: data-science-studio-mid-service
+    name: dss-app-service-test
+    path: dss-app-service-test
 
 ############################ Enable/Disable application services ##############################
 services:
