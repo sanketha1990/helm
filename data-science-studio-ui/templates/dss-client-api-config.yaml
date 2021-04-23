@@ -3,7 +3,7 @@ apiVersion: v1
 data:
   api.config.json: |
     {
-      "apiUrl": "http://10.113.104.24:31353/dss-app-service",
+      "apiUrl": "http://10.113.104.24:31353/dss-app-service-v3",
       "keycloakConfig": {
           "url": "http://10.113.104.24:31353/auth",
           "realm": "sys-testing",
