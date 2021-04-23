@@ -21,8 +21,8 @@ dssServiceApplication:
     uploadClaimName: uploads-pv-claim
 
   ingress:
-    name: dss-app-service-test
-    path: dss-app-service-test
+    name: dss-app-service
+    path: dss-app-service
 
 ############################ Enable/Disable application services ##############################
 services:
