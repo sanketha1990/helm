@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "dss-service.api.name" . }}
+  name: {{ .Values.dssServiceApplication.name }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ include "dss-service.api.name" . }}
+    app: {{ .Values.dssServiceApplication.name }}
 spec:
   type: ClusterIP
   ports:
     - port: {{ .Values.dssServiceApplication.ports.port }}
       name: {{ .Values.dssServiceApplication.ports.name }}
   selector:
-   app: {{ include "dss-service.api.name" . }}
+   app: {{ .Values.dssServiceApplication.name }}
 {{- end -}}
