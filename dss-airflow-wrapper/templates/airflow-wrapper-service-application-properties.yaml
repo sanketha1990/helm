@@ -74,16 +74,16 @@ data:
     ###############################Log Properties ##################################################
     logging.pattern.console= %clr(%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}}){yellow} %clr(%marker ${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} [%F] [%M] [%C]:%L %clr(---){faint} %clr([%t]){faint} ${hostName} %clr(%logger{39}){cyan} %clr(:){faint} %m %throwable{short.className} %X{correlationId} %X{userId} %X{sessionId} %X{serviceName} %n%n
     ################################## Airflow ########################
-    upload.directory=/data
-    ngp.airflow.service.logs=/logs/
-    ngp.airflow.service.output=/output/
-    ngp.airflow.service.modelrepository=/modelrepository/
-    ngp.airflow.service.data=/data/
+    upload.directory=/usr/local/airflow/data
+    ngp.airflow.service.logs=/usr/local/airflow/logs/
+    ngp.airflow.service.output=/usr/local/airflow/output/
+    ngp.airflow.service.modelrepository=/usr/local/airflow/modelrepository/
+    ngp.airflow.service.data=/usr/local/airflow/data/
     ################ airflow end #####################################
     ##############################################TEMPLATE PROPERTIES#############################
     ngp.airflow.template.path=/template
     ngp.airflow.template.name=dag.vm
-    ngp.airflow.template.output=/dags/
+    ngp.airflow.template.output=/usr/local/airflow/dags/
     ngp.airflow.template.fileKey=operatorFileName
     ngp.airflow.template.classKey=operatorClassName
     ngp.airflow.template.groupKey=group
