@@ -96,7 +96,7 @@ data:
     ngp.airflow-wrapper-service.url = http://10.113.104.24:30334/
     upload.directory = /upload
     ngp.security.enabled=false
-    server.servlet.context-path=/dss-app-service-test
+    server.servlet.context-path=/dss-app-service
 
     spring.servlet.multipart.max-file-size=200MB
     spring.servlet.multipart.max-request-size=200MB
