@@ -1,7 +1,7 @@
 ############################ DSS middle layer (service) #####################################
 dssServiceApplication:
   name: data-science-studio-app-service
-  image: 10.113.56.67/ngp-develop/data-science-studio-service:20210418231435
+  image: docker.io/sankethacr/data-science-studio-service:v3
   replicas: 1
   ports:
     port: 8080
