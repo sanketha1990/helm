@@ -16,6 +16,7 @@ airflow:
 
   db: airflow
   host: postgres-v1
+  type: NodePort
   ports:
     postgresPort: 5432
     airflowPort: 8080

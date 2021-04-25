@@ -7,10 +7,12 @@ metadata:
   labels:
     app: {{ include "dss-service.api.name" . }}
 spec:
-  type: NodePort
+  type: {{ .Values.airflow.type }}
   ports:
     - port: {{ .Values.airflow.ports.airflowPort }}
+      {{- if and (or (eq .Values.airflow.type "NodePort") (eq .Values.airflow.type "LoadBalancer")) (not (empty .Values.airflow.ports.nodePort)) }}
       nodePort: {{ .Values.airflow.ports.nodePort }}
+      {{- end }}
       name: {{ .Values.airflow.ports.name }}
   selector:
    app: {{ include "dss-service.api.name" . }}

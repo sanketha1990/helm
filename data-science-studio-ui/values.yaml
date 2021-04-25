@@ -3,6 +3,7 @@ dssClintApplication:
   name: data-science-studio-app-client
   image: 10.113.56.67/ngp-develop/data-science-studio-ui:20210423145325
   replicas: 1
+  type: NodePort
   ports:
     port: 80
     nodePort: 30112

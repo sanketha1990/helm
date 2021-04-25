@@ -7,10 +7,13 @@ metadata:
   labels:
     app: {{ .Values.dssServiceApplication.name }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.dssServiceApplication.type }}
   ports:
     - port: {{ .Values.dssServiceApplication.ports.port }}
       name: {{ .Values.dssServiceApplication.ports.name }}
+      {{- if and (or (eq .Values.dssServiceApplication.type "NodePort") (eq .Values.dssServiceApplication.type "LoadBalancer")) (not (empty .Values.dssServiceApplication.ports.nodePort)) }}
+      nodePort: {{ .Values.dssServiceApplication.ports.nodePort }}
+      {{- end }}
   selector:
    app: {{ .Values.dssServiceApplication.name }}
 {{- end -}}
