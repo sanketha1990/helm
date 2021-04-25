@@ -7,7 +7,7 @@ data:
       "keycloakConfig": {
           "url": "http://10.113.104.24:31353/auth",
           "realm": "sys-testing",
-          "clientId": "data-science-studio-app-v2"
+          "clientId": "data-science-studio-app-v3"
       },
       "commonServicesApiUrl": "http://10.113.104.24:32311"
     }
