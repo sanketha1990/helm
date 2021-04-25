@@ -90,7 +90,7 @@ data:
     ngp.airflow.template.daskClient=10.113.113.95:8786
     ##############################################################################################
     ###########################AIRFLOW API PROPERTIES#############################################
-    ngp.airflow.apiservice.url=http://10.113.104.24:31353/airflow-operator/api/v1/
+    ngp.airflow.apiservice.url=http://10.113.104.24:30223/api/v1/
     ngp.airflow.apiservice.user=airflow
     ngp.airflow.apiservice.password=airflow
     ngp.airflow.apiservice.dag=/dags/{dag_id}
