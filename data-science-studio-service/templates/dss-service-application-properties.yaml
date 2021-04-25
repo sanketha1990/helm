@@ -93,7 +93,7 @@ data:
     ngp.register.apiservice.roles=configuration_view
 
     ngp.register.force.delete=false
-    ngp.airflow-wrapper-service.url = http://10.113.104.24:30334/
+    ngp.airflow-wrapper-service.url = http://10.113.104.24:31353/data-science-studio-airflow-service/
     upload.directory = /upload
     ngp.security.enabled=false
     server.servlet.context-path=/dss-app-service-test

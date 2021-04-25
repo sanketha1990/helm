@@ -3,7 +3,7 @@ namespace: dss-ingress
 airflowWrapper:
   name: dss-airflow-service-service
   image: 10.113.56.67/ngp-develop/dss-airflow-service-service:20210422195110
-  type: NodePort
+  type: ClusterIP
   ports:
     containerPort: 8080
     name: http
