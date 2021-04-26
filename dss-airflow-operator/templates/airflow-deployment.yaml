@@ -47,6 +47,8 @@ spec:
             - containerPort: {{ .Values.airflow.ports.airflowPort }}
               name: {{ .Values.airflow.ports.name }}
           env:
+          - name : AIRFLOW__WEBSERVER__BASE_URL
+            value: http://10.113.104.24:31353/airflow-operator
           - name: LOAD_EX
             value: {{ .Values.airflow.loadex | quote }}
           - name: EXECUTOR
