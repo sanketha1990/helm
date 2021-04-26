@@ -7,6 +7,7 @@ airflow:
   executor: Local
   username: airflow
   password: airflow
+  baseUrlPath: http://10.113.104.24:31353/airflow-operator
   security:
     username: airflow
     firstname: ngp
