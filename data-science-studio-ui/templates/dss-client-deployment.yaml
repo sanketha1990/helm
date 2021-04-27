@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "dss-service.client.name" . }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.tenant }}
   labels:
     app: {{ include "dss-service.client.name" . }}
 spec:

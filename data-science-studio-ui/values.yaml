@@ -1,5 +1,6 @@
 ############################ DSS UI (Client) service ########################################
 dssClintApplication:
+  tenant: dss-ingress
   name: data-science-studio-app-client
   image: 10.113.56.67/ngp-develop/data-science-studio-ui:20210423145325
   replicas: 1

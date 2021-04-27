@@ -2,18 +2,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.dssServiceApplication.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ include "dss-service.api.name" . }}
+  namespace: {{ .Values.tenant }}
   labels:
-    app: {{ .Values.dssServiceApplication.name }}
+    app: {{ include "dss-service.api.name" . }}
 spec:
   type: {{ .Values.dssServiceApplication.type }}
   ports:
     - port: {{ .Values.dssServiceApplication.ports.port }}
-      name: {{ .Values.dssServiceApplication.ports.name }}
+      name: {{ include "dss-service.api.name" . }}
       {{- if and (or (eq .Values.dssServiceApplication.type "NodePort") (eq .Values.dssServiceApplication.type "LoadBalancer")) (not (empty .Values.dssServiceApplication.ports.nodePort)) }}
       nodePort: {{ .Values.dssServiceApplication.ports.nodePort }}
       {{- end }}
   selector:
-   app: {{ .Values.dssServiceApplication.name }}
+   app: {{ include "dss-service.api.name" . }}
 {{- end -}}

@@ -13,7 +13,7 @@ spec:
       paths:
       - path: /{{ .Values.airflow.ingress.path }}
         backend:
-          serviceName: {{ include "dss-service.api.name" . }}
+          serviceName: {{ include "dss-service.client.name" . }}
           servicePort: {{ .Values.airflow.ports.airflowPort }}
 {{- end -}}
 

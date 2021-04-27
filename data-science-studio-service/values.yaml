@@ -1,5 +1,6 @@
 ############################ DSS middle layer (service) #####################################
 dssServiceApplication:
+  tenant: dss-ingress
   name: data-science-studio-app-service
   image: 10.113.56.67/ngp-develop/data-science-studio-service:20210424154121
   replicas: 1

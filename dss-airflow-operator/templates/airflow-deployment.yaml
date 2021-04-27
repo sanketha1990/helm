@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "dss-service.api.name" . }}
-  namespace: {{ .Values.namespace }}
+  name: {{ include "dss-service.client.name" . }}
+  namespace: {{ .Values.tenant }}
   labels:
-    app: {{ include "dss-service.api.name" . }}
+    app: {{ include "dss-service.client.name" . }}
 spec:
   replicas: {{ .Values.airflow.replicas }}
   selector:
     matchLabels:
-      app: {{ include "dss-service.api.name" . }}
+      app: {{ include "dss-service.client.name" . }}
   template:
     metadata:      
       labels:
-        app: {{ include "dss-service.api.name" . }}
+        app: {{ include "dss-service.client.name" . }}
     spec:
       volumes:
       - name: dags-volume
@@ -40,7 +40,7 @@ spec:
           claimName: output-pvc
 
       containers:
-        - name: {{ include "dss-service.api.name" . }}
+        - name: {{ include "dss-service.client.name" . }}
           image:  {{ .Values.airflow.image }}
           imagePullPolicy: "IfNotPresent"
           ports:

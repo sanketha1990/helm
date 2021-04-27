@@ -3,10 +3,10 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ .Values.airflowWrapper.ingress.name }}
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.tenant }}
   annotations:
     kubernetes.io/ingress.class: kong
-    konghq.com/strip-path: "true"
+    konghq.com/strip-path: "false"
 spec:
   rules:
   - http:

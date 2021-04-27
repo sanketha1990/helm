@@ -1,4 +1,4 @@
-namespace: dss-ingress
+tenant: dss-ingress
 airflow:
   name: airflow-webserver
   replicas: 1

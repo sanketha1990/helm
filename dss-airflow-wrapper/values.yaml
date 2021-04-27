@@ -1,5 +1,5 @@
 ########################### Airflow wrapper ########################################
-namespace: dss-ingress
+tenant: dss-ingress
 airflowWrapper:
   name: dss-airflow-service-service
   image: 10.113.56.67/ngp-develop/dss-airflow-service-service:20210422195110
